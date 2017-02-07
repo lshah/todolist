@@ -1,0 +1,94 @@
+/**fonts
+font-family: 'Roboto', sans-serif;
+font-family: 'Playfair Display SC', serif;
+font-family: 'Indie Flower', cursive;
+font-family: 'Lato', sans-serif;
+**/
+
+/**Main Styles**/
+
+* {
+	
+	margin: 0;
+	padding:0;
+	
+}
+
+body {
+	font-family: 'Indie Flower', cursive;
+	
+}
+
+
+#wrapper {
+	margin-top: 50px;	
+	max-width: 325px;
+	margin-left: 35%;
+	border: solid 1px black;
+}
+
+#header {
+	
+	padding: 5px 0px;
+	
+	}
+
+h1 {
+	font-family: 'Lato', sans-serif;
+	margin-top: 25px;
+	text-align: center;
+	color: #00cc66;
+	font-size: 2.5em;
+}
+
+#todotext {
+	font-family: 'Caveat Brush', cursive;
+	margin: 25px 0 15px 25px;
+	height: 25px;
+	width: 275px;
+	border: none;
+	border-bottom: solid 1px black;
+	font-size: 1.2em;
+	
+}
+
+#todo {
+	height: 25px;
+	width: 275px;
+	margin-top: 25px;
+}
+
+#list {
+	height: 275px;
+	width: 275px;
+	margin: 0 25px 25px 25px;
+	font-family: 'Caveat Brush', cursive;
+	font-size: 1.3em;
+}
+
+#btn {
+	height: 25px;
+	width: 25px;
+	margin-left: -35px;
+	background-color: white;
+	color: black;
+	border: none;
+	font-size: 1.5em;
+	color: #00cc66;
+	font-family: 'Caveat Brush', cursive;
+	
+}
+
+
+
+
+/****Media Queries****/
+
+@media (max-width: 700px){
+	
+	
+	.btn,
+	.reset-btn {
+		margin-left: 130px;
+	}
+}
