@@ -1,6 +1,7 @@
 
 document.getElementById('btn').addEventListener('click', add);
 
+
 var task = [];
 var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
@@ -37,7 +38,7 @@ function showList(){
 		
 		var html = '<ul id="test">';
 	for(var i = 0; i<task.length; i++){
-		html+= '<li>' + task[i] + '</li>';
+		html+= '<li>' + task[i] + '<button id="deleteTask">x</button>' + '<a href id="editTask">edit</a>' + '</li>';
 	};
 	
 	html+= '</ul>';

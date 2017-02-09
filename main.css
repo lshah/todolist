@@ -3,6 +3,7 @@ font-family: 'Roboto', sans-serif;
 font-family: 'Playfair Display SC', serif;
 font-family: 'Indie Flower', cursive;
 font-family: 'Lato', sans-serif;
+font-family: 'Caveat Brush', cursive;
 **/
 
 /**Main Styles**/
@@ -15,7 +16,7 @@ font-family: 'Lato', sans-serif;
 }
 
 body {
-	font-family: 'Indie Flower', cursive;
+	font-family: 'Caveat Brush', cursive;
 	
 }
 
@@ -37,7 +38,7 @@ h1 {
 	font-family: 'Lato', sans-serif;
 	margin-top: 25px;
 	text-align: center;
-	color: #00cc66;
+	color: #4040bf;
 	font-size: 2.5em;
 }
 
@@ -74,8 +75,8 @@ h1 {
 	color: black;
 	border: none;
 	font-size: 1.5em;
-	color: #00cc66;
-	font-family: 'Caveat Brush', cursive;
+	color: #4040bf;
+	font-family: 'Lato', sans-serif;
 	
 }
 
@@ -83,7 +84,32 @@ h1 {
 	list-style: none;
 }
 
+#deleteTask {
+	height: 25px;
+	width: 25px;
+	background-color: #ffcccc;
+	color: white;
+	border: none;
+	margin-left: 3%;
+	float: right;
+}
 
+#deleteTask:hover {
+	background-color: tomato;
+}
+
+#editTask {
+	float: right;
+	margin-left: 5%;
+	text-decoration: none;
+	font-family: 'Caveat Brush', cursive;
+	color: #c6c6ec;
+	font-size: 1em;
+}
+
+#editTask:hover{
+	color: #4040bf;
+}
 
 /****Media Queries****/
 
