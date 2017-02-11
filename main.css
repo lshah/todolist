@@ -111,6 +111,20 @@ h1 {
 	color: #4040bf;
 }
 
+footer {
+	background-color: #4040bf;
+	height: 35px;
+	padding-top: 3%;
+}
+
+footer a{
+	margin-left: 75%;
+	text-decoration: none;
+	color: white;
+}
+
+
+
 /****Media Queries****/
 
 @media (max-width: 700px){

@@ -13,31 +13,22 @@
 	</head>
 	
 	<body>
-	
-	
-		
-		
 		<div id="wrapper">	
 			<div id="header">
-			<h1>todos</h1>
-		
-		</div>
-			
-				<input type="text" placeholder="Add Item" id="todotext">
-				<input type="submit" value="+" id="btn">
-			
-			
-			<div id="list">
+				<h1>todos</h1>
+			</div>
 				
-					
+			<input type="text" placeholder="Add Item" id="todotext" onkeypress="enterEvent(event)">
+			<input type="submit" value="+" id="btn">
+						
+			<div id="list">
 			</div>
 			
-			
-			
 			<script src="task.js"></script>
+			<footer><div><a href="" id ="clearList" onclick="clearList()">Clear List</a></div></footer>
 		</div>
 	
-	<footer><div></div></footer>
+	
 		
 		
 		
