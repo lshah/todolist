@@ -87,28 +87,20 @@ h1 {
 #deleteTask {
 	height: 25px;
 	width: 25px;
-	background-color: #ffcccc;
-	color: white;
+	background-color: white;
+	color: tomato;
 	border: none;
 	margin-left: 3%;
 	float: right;
 }
 
-#deleteTask:hover {
-	background-color: tomato;
+.checkTask {
+	margin: 0 2%;
 }
 
-#editTask {
-	float: right;
-	margin-left: 5%;
-	text-decoration: none;
-	font-family: 'Caveat Brush', cursive;
-	color: #c6c6ec;
-	font-size: 1em;
-}
-
-#editTask:hover{
-	color: #4040bf;
+.checkTask {
+	height: 50px;
+	width: 25px;
 }
 
 footer {
