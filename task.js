@@ -1,9 +1,7 @@
 
 document.getElementById('btn').addEventListener('click', add);
 
-
 /**document.getElementById('deleteTask').addEventListener('click', deleteTask);**/
-
 
 function enterEvent(event){
 	var x= event.which || event.keyCode;
@@ -44,7 +42,7 @@ function showList(){
 		
 		var html = '<ul id="test">';
 	for(var i = 0; i<task.length; i++){
-		html+= '<li>' + '<span class="checkTask"><input type="checkbox" name="task" value=""></span>' + task[i] + '<button id="deleteTask">x</button>' + '</li>';
+		html+= '<li>' + '<div class="checkTask"><input type="checkbox" name="task" value=""></div>' + '<label for="checkTask">' + task[i] + '</label>' + '<button class="deleteTask">x</button>' + '</li>';
 	};
 	
 	html+= '</ul>';
@@ -60,6 +58,15 @@ function clearList(){
 	window.localStorage.clear();
 }
 
-function deleteTask(){
-	/**document.getElementById('deleteTask').addEventListener('click', a);**/
+
+
+var close = document.getElementsByClassName('deleteTask');
+	
+for(var j = 0; j < close.length; j++){
+		
+	close[j].onclick = function(){
+		var d = this.parentElement;
+		d.style.display = 'none';
+		/**localStorage.removeItem(index, d);**/
+	}
 }
