@@ -1,8 +1,9 @@
 
+/***Click button to add task***/
 document.getElementById('btn').addEventListener('click', add);
 
-/**document.getElementById('deleteTask').addEventListener('click', deleteTask);**/
 
+/***Add task using enter key on keyboard***/
 function enterEvent(event){
 	var x= event.which || event.keyCode;
 	if(x == 13){
@@ -10,14 +11,16 @@ function enterEvent(event){
 	}
 }
 
+/***Declare some variables***/
 var task = [];
 var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
+
+/***Call show list function to load tasks from local storage on page load***/
 showList();
 
 
-
-
+/***Add task and store in local storage***/
 function add(){
 	task.push(listItem.value);
 	console.log(task);
@@ -29,26 +32,43 @@ function add(){
 	removeTask();
 }
 
-
+/***function to clear input field after adding task***/
 function clearvalue(){
 	listItem.value = '';
-	
 }
 
+
+/***Call remove task function***/
 removeTask();
+
+/***functon to remove a task when x is clicked***/
 function removeTask(){
 	var close = document.getElementsByClassName('deleteTask');
 	for(var j = 0; j < close.length; j++){
 		
 	close[j].onclick = function(){
 		
+		
+		event.currentTarget.parentElement.remove();
+		
+		var retrieveList = localStorage.getItem('task');
+		var retrievedList = JSON.parse(retrieveList);
+		task = retrievedList;
+		
+		task.splice(j, 0);
+		task;
+		console.log(task);
+		
+		/**var elem = document.getElementById('someId');
+		elem.parentNode.removeChild(elem);
+		console.log(elem);
 		var d = this.parentElement;
-		d.style.display = 'none';
+		d.style.display = 'none';**/
 	}
 }
 }
 
-
+/**function to populate the todo list with values stored in local storage***/
 function showList(){
 	if(localStorage.getItem('task') !== null){
 		
@@ -62,14 +82,11 @@ function showList(){
 	};
 	
 	html+= '</ul>';
-	tasklist.innerHTML = html;
-		
-		
-	}
-	
-	
+	tasklist.innerHTML = html;	
+	}	
 }
 
+/***function to clear the todo list from local storage***/
 function clearList(){
 	window.localStorage.clear();
 }
