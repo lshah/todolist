@@ -87,11 +87,16 @@ h1 {
 .deleteTask {
 	height: 25px;
 	width: 25px;
-	background-color: gray;
+	background-color: white;
 	color: tomato;
 	border: none;
 	margin-left: 3%;
 	float: right;
+	
+}
+.deleteTask:after{
+	content: "x";
+	color: red;
 }
 
 .checkTask {
