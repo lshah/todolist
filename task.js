@@ -63,23 +63,12 @@ function removeTask(){
 	}
 }
 
+/***checked tasks***/
+var check = document.getElementById('someId');
 
+	
 
-/***find index***/
-
-		/**var fruits = ['apple','orange','peaches'];
-		var findIndexOf = function(fruits, valueToSeek){
-			for(var i=0; i<fruits.length; i++){
-				if(fruits[i] === valueToSeek){
-					return i; 
-				console.log(i);
-				}
-				
-			}
-		}
-		
-		var index = findIndexOf(fruits, 'plums');
-		console.log(index);**/
+/***find index of task***/
 		
 			var findIndexOf = function (task, valueToSeek){
 				for(var i = 0; i<task.length; i++){

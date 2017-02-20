@@ -24,7 +24,8 @@ body {
 #wrapper {
 	margin-top: 50px;	
 	max-width: 325px;
-	margin-left: 35%;
+	
+	margin-left: 5%;
 	border: solid 1px black;
 }
 
@@ -51,6 +52,7 @@ h1 {
 	border-bottom: solid 1px black;
 	font-size: 1.2em;
 	
+	
 }
 
 #todo {
@@ -65,6 +67,7 @@ h1 {
 	margin: 0 25px 25px 25px;
 	font-family: 'Caveat Brush', cursive;
 	font-size: 1.5em;
+	overflow: auto;
 }
 
 #btn {
@@ -126,10 +129,10 @@ footer a{
 /****Media Queries****/
 
 @media (max-width: 700px){
-	
-	
-	.btn,
-	.reset-btn {
-		margin-left: 130px;
-	}
+	#wrapper {
+	margin-top: 50px;	
+	max-width: 325px;
+	margin-left: 5%;
+	border: solid 1px black;
+}
 }
