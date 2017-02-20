@@ -16,9 +16,10 @@ var task = [];
 var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
 
+
+
 /***Call show list function to load tasks from local storage on page load***/
 showList();
-
 
 /***Add task and store in local storage***/
 function add(){
@@ -44,29 +45,53 @@ removeTask();
 /***functon to remove a task when x is clicked***/
 function removeTask(){
 	var close = document.getElementsByClassName('deleteTask');
+	
 	for(var j = 0; j < close.length; j++){
 		
 	close[j].onclick = function(){
+		var d = this.parentElement.textContent;
 		
+		var index = findIndexOf(task, d);
+		console.log(index);
 		
-		event.currentTarget.parentElement.remove();
+		task.splice(index, 1);
+		localStorage.setItem('task', JSON.stringify(task));
+		showList();
 		
-		var retrieveList = localStorage.getItem('task');
-		var retrievedList = JSON.parse(retrieveList);
-		task = retrievedList;
-		
-		task.splice(j, 0);
-		task;
-		console.log(task);
-		
-		/**var elem = document.getElementById('someId');
-		elem.parentNode.removeChild(elem);
-		console.log(elem);
-		var d = this.parentElement;
-		d.style.display = 'none';**/
+			
+		}
 	}
 }
-}
+
+
+
+/***find index***/
+
+		/**var fruits = ['apple','orange','peaches'];
+		var findIndexOf = function(fruits, valueToSeek){
+			for(var i=0; i<fruits.length; i++){
+				if(fruits[i] === valueToSeek){
+					return i; 
+				console.log(i);
+				}
+				
+			}
+		}
+		
+		var index = findIndexOf(fruits, 'plums');
+		console.log(index);**/
+		
+			var findIndexOf = function (task, valueToSeek){
+				for(var i = 0; i<task.length; i++){
+					if(task[i] === valueToSeek){
+						return i;
+						console.log(i);
+					}
+				}
+			}
+
+
+
 
 /**function to populate the todo list with values stored in local storage***/
 function showList(){
@@ -78,11 +103,12 @@ function showList(){
 		
 		var html = '<ul id="test">';
 	for(var i = 0; i<task.length; i++){
-		html+= '<li>' + '<input type="checkbox" name="task" value="selected" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + task[i] + '</label>' + '<button class="deleteTask">x</button>' + '</li>';
+		html+= '<li>' + '<input type="checkbox" name="task" value="selected" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + task[i] + '</label>' + '<button class="deleteTask"></button>' + '</li>';
 	};
 	
 	html+= '</ul>';
 	tasklist.innerHTML = html;	
+	removeTask();
 	}	
 }
 

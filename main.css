@@ -87,7 +87,7 @@ h1 {
 .deleteTask {
 	height: 25px;
 	width: 25px;
-	background-color: white;
+	background-color: gray;
 	color: tomato;
 	border: none;
 	margin-left: 3%;
