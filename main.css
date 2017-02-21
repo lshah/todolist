@@ -80,6 +80,7 @@ h1 {
 	font-size: 1.5em;
 	color: #4040bf;
 	font-family: 'Lato', sans-serif;
+	-webkit-appearance: none;
 	
 }
 
@@ -132,14 +133,11 @@ footer a{
 	#wrapper {
 	margin-top: 10px;	
 	max-width: 85%;
-	margin-left: -2%;
+	margin-left: -1%;
 	
 	border: none;
 }
 
-#list {
-	
-	width: 275px;
-}
+
 
 }
