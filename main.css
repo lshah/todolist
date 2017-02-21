@@ -128,12 +128,18 @@ footer a{
 
 /****Media Queries****/
 
-@media (max-width: 750px){
+@media (max-width: 735px){
 	#wrapper {
 	margin-top: 10px;	
-	max-width: 320px;
-	margin-left: 1%;
+	max-width: 85%;
+	margin-left: -2%;
 	
 	border: none;
 }
+
+#list {
+	
+	width: 275px;
+}
+
 }
