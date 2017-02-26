@@ -31,6 +31,7 @@ function add(){
 	showList();
 	clearvalue();
 	removeTask();
+	
 }
 
 /***function to clear input field after adding task***/
@@ -52,7 +53,7 @@ function removeTask(){
 		var d = this.parentElement.textContent;
 		
 		var index = findIndexOf(task, d);
-		console.log(index);
+		
 		
 		task.splice(index, 1);
 		localStorage.setItem('task', JSON.stringify(task));
@@ -64,9 +65,46 @@ function removeTask(){
 }
 
 /***checked tasks***/
-var check = document.getElementById('someId');
 
+	var check = document.getElementsByTagName('input');
+	for(var j=0; j<check.length; j++){
+		check[j].onchange = function(){
+			
+			/***get index of task***/
+			var d = this.parentElement.textContent;
+			console.log(d);
+			var index = findIndexOf(task, d);
+			console.log(index);
+			/***create object with index of task and checked state***/
+			var obj = {'taskLabel':d, 'checkIndex': index, 'checkTask': this.checked};
+			console.log(obj);
+			
+			/***store obj to local storage***/
+			/***Note to self: i probably need to make this an array***/
+			
+			localStorage.setItem('checkObject', JSON.stringify(obj));
+			
+			/***get obj from local storage and display***/			
+			if(this.checked === true){
+				console.log('yes, it is checked');
+			}
+			else{
+				console.log('not checked');
+			}
+		}
+	}
+
+function checkThis(){
+	var obj = JSON.parse(localStorage.getItem('checkObject'));
+	console.log(obj);
 	
+	if(Object["checkTask"] === true){
+		console.log('yes it is true');
+		document.getElementsByTagName('input').style.color = 'red';
+	}
+}
+
+checkThis();
 
 /***find index of task***/
 		
@@ -92,12 +130,14 @@ function showList(){
 		
 		var html = '<ul id="test">';
 	for(var i = 0; i<task.length; i++){
-		html+= '<li>' + '<input type="checkbox" name="task" value="selected" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + task[i] + '</label>' + '<button class="deleteTask"></button>' + '</li>';
+		html+= '<li>' + '<input type="checkbox" name="task" value="" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + task[i] + '</label>' + '<button class="deleteTask"></button>' + '</li>';
 	};
 	
 	html+= '</ul>';
 	tasklist.innerHTML = html;	
 	removeTask();
+	
+	
 	}	
 }
 
