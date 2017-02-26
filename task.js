@@ -31,7 +31,7 @@ function add(){
 	showList();
 	clearvalue();
 	removeTask();
-	
+	checkingTasks();
 }
 
 /***function to clear input field after adding task***/
@@ -65,7 +65,7 @@ function removeTask(){
 }
 
 /***checked tasks***/
-
+function checkingTasks(){
 	var check = document.getElementsByTagName('input');
 	for(var j=0; j<check.length; j++){
 		check[j].onchange = function(){
@@ -105,6 +105,7 @@ function checkThis(){
 }
 
 checkThis();
+}
 
 /***find index of task***/
 		
