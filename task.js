@@ -32,6 +32,7 @@ function add(){
 	clearvalue();
 	removeTask();
 	checkingTasks();
+	
 }
 
 /***function to clear input field after adding task***/
@@ -90,21 +91,21 @@ function checkingTasks(){
 			}
 			else{
 				console.log('not checked');
+				
 			}
 		}
 	}
+
+}
 
 function checkThis(){
 	var obj = JSON.parse(localStorage.getItem('checkObject'));
 	console.log(obj);
 	
-	if(Object["checkTask"] === true){
+	if(obj["checkTask"] === true){
 		console.log('yes it is true');
-		document.getElementsByTagName('input').style.color = 'red';
+		
 	}
-}
-
-checkThis();
 }
 
 /***find index of task***/
@@ -136,12 +137,14 @@ function showList(){
 	
 	html+= '</ul>';
 	tasklist.innerHTML = html;	
+	
 	removeTask();
 	
+	checkingTasks();
 	
 	}	
 }
-
+checkThis()
 /***function to clear the todo list from local storage***/
 function clearList(){
 	window.localStorage.clear();
