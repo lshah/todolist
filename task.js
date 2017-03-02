@@ -73,15 +73,12 @@ function checkingTasks(){
 			
 			/***get index of task***/
 			var d = this.parentElement.textContent;
-			console.log(d);
 			var index = findIndexOf(task, d);
 			console.log(index);
 			/***create object with index of task and checked state***/
 			var obj = {'taskLabel':d, 'checkIndex': index, 'checkTask': this.checked};
 			console.log(obj);
 			
-			/***store obj to local storage***/
-			/***Note to self: i probably need to make this an array***/
 			
 			localStorage.setItem('checkObject', JSON.stringify(obj));
 			
@@ -104,7 +101,8 @@ function checkThis(){
 	
 	if(obj["checkTask"] === true){
 		console.log('yes it is true');
-		
+		var a = document.querySelector('input[type="checkbox"]');
+		a.checked = true;
 	}
 }
 
