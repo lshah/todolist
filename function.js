@@ -16,7 +16,7 @@ var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
 var tasks = [];
 var obj = {'taskLabel':'', 'checkIndex': '', 'checkTask': ''};
-var taskName = obj["taskLabel"];
+
 
 showTasksList();
 removeTaskFromTaskList();
@@ -55,18 +55,21 @@ function removeTaskFromTaskList(){
 	for(var j=0; j<removeTask.length; j++){
 		removeTask[j].onclick = function(){
 			var d = this.parentElement.textContent;
-			
-			var index = findIndexOf(taskName, d);
+			console.log(d);
+			var index = findIndexOf(tasks,"taskLabel", d);
 			console.log(index);
 		}
 	}
 }
 
-var findIndexOf = function (taskName, valueToSeek){
-				for(var i = 0; i<tasks.length; i++){
-					if(taskName === valueToSeek){
+	function findIndexOf (arrayToSearch, key, valueToSeek){
+				for(var i = 0; i<arrayToSearch.length; i++){
+					if(arrayToSearch[i][key] === valueToSeek){
 						return i;
 						console.log(i);
+					}
+					else{
+						return null;
 					}
 				}
 			}
