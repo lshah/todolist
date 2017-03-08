@@ -25,7 +25,7 @@ function addTaskToTaskList(){
 	tasks.push(obj);
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	showTasksList();
-	clearvalue();
+	clearValueAfterAddingTaskToList();
 }
 
 function showTasksList(){
@@ -55,7 +55,7 @@ function findIndexOf(tasks, valueToSeek){
 	}
 }
 
-function clearvalue(){
+function clearValueAfterAddingTaskToList(){
 	listItem.value = '';
 }
 
