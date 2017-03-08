@@ -1,39 +1,43 @@
 
 /***Click button to add task***/
-document.getElementById('btn').addEventListener('click', add);
-show();
+document.getElementById('btn').addEventListener('click', addTaskToTaskList);
+
 /***Add task using enter key on keyboard***/
 function enterEvent(event){
 	var x= event.which || event.keyCode;
 	if(x == 13){
-		add();
+		addTaskToTaskList();
 	}
 }
+
 
 /***Declare some variables***/
 var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
-var task = [];
+var tasks = [];
 var obj = {'taskLabel':'', 'checkIndex': '', 'checkTask': ''};
-obj["taskLabel"] = listItem.value;
 
+showTasksList();
 
 /***Add task and store in local storage***/
-function add(){
+function addTaskToTaskList(){
 	obj["taskLabel"] = listItem.value;
-	task.push(obj);
-	localStorage.setItem('task', JSON.stringify(task));
-	show();
+	tasks.push(obj);
+	localStorage.setItem('tasks', JSON.stringify(tasks));
+	showTasksList();
 	clearvalue();
 }
 
-function show(){
-	if(JSON.parse(localStorage.getItem('task')) !== null){
+function showTasksList(){
+	if(JSON.parse(localStorage.getItem('tasks')) !== null){
+		console.log(localStorage.getItem('tasks'));
+		var retrieveList = localStorage.getItem('tasks');
+		var retrievedList = JSON.parse(retrieveList);
+		tasks = retrievedList;		
 		
-		console.log(localStorage.getItem('task'));
 		var html = '<ul id="test">';
-		for(var i=0; i<task.length; i++){
-			html+='<li>' + '<input type="checkbox" name="task" value="" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + obj["taskLabel"] + '</label>' + '<button class="deleteTask"></button>' + '</li>'
+		for(var i=0; i<tasks.length; i++){
+			html+='<li>' + '<input type="checkbox" name="task" value="" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + tasks[i]['taskLabel'] + '</label>' + '<button class="deleteTask"></button>' + '</li>'
 			
 		}
 		
@@ -42,9 +46,9 @@ function show(){
 	}
 }
 
-function findIndexOf(task, valueToSeek){
-	for (var i=0; i<task.length; i++){
-		if(task[i] === valueToSeek){
+function findIndexOf(tasks, valueToSeek){
+	for (var i=0; i<tasks.length; i++){
+		if(tasks[i] === valueToSeek){
 			return i;
 			console.log(i);
 		}
@@ -55,7 +59,7 @@ function clearvalue(){
 	listItem.value = '';
 }
 
-function clearList(){
+function clearTasksList(){
 	window.localStorage.clear();
 }
 

@@ -144,7 +144,7 @@ function showList(){
 }
 checkThis()
 /***function to clear the todo list from local storage***/
-function clearList(){
+function clearTasksList(){
 	window.localStorage.clear();
 }
 
