@@ -15,7 +15,7 @@ function enterEvent(event){
 var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
 var tasks = [];
-var obj = {'taskLabel':'', 'checkIndex': '', 'checkTask': ''};
+var obj = {'taskLabel':'', 'taskIndex': '', 'completedTask': ''};
 
 
 showTasksList();
@@ -31,9 +31,10 @@ function addTaskToTaskList(){
 	removeTaskFromTaskList();
 }
 
+
+
 function showTasksList(){
 	if(JSON.parse(localStorage.getItem('tasks')) !== null){
-		console.log(localStorage.getItem('tasks'));
 		var retrieveList = localStorage.getItem('tasks');
 		var retrievedList = JSON.parse(retrieveList);
 		tasks = retrievedList;		
@@ -46,32 +47,54 @@ function showTasksList(){
 		
 		html+='</ul>'
 		tasklist.innerHTML = html;
+		removeTaskFromTaskList();
 	}
+	
+	
 }
 
 
 function removeTaskFromTaskList(){
 	var removeTask = document.getElementsByClassName('deleteTask');
-	for(var j=0; j<removeTask.length; j++){
+	
+	for(var j=0; j < removeTask.length; j++){
 		removeTask[j].onclick = function(){
 			var d = this.parentElement.textContent;
-			console.log(d);
 			var index = findIndexOf(tasks,"taskLabel", d);
 			console.log(index);
+			tasks.splice(index, 1);
+			localStorage.setItem('tasks', JSON.stringify(tasks));
+			showTasksList();
+			
 		}
 	}
 }
 
+function checkCompletedTasks(){
+	var completedTask = document.getElementsByClassName('checkTask');
+	
+	for(var j=0; j<completedTask.length; j++){
+		completedTask[j].onclick = function(){
+			var d = this.parentElement.textContent;
+			var index = findIndexOf(tasks, 'taskLabel', d);
+			console.log(index);
+			obj['taskIndex'][d] = index;
+			tasks.push(obj);	
+			localStorage.setItem('tasks', JSON.stringify(tasks));
+		}
+	}
+}
+checkCompletedTasks();
+
+
 	function findIndexOf (arrayToSearch, key, valueToSeek){
-				for(var i = 0; i<arrayToSearch.length; i++){
+				for(var i = 0; i < arrayToSearch.length; i++){
 					if(arrayToSearch[i][key] === valueToSeek){
 						return i;
-						console.log(i);
 					}
-					else{
-						return null;
-					}
+					
 				}
+				return null;
 			}
 
 			
