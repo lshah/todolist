@@ -75,15 +75,33 @@ function checkCompletedTasks(){
 	
 	for(var j=0; j<completedTask.length; j++){
 		completedTask[j].onclick = function(){
+			
 			var d = this.parentElement.textContent;
+			
 			var index = findIndexOf(tasks, 'taskLabel', d);
-			console.log(index);
-			obj['taskIndex'][d] = index;
-			tasks.push(obj);	
-			localStorage.setItem('tasks', JSON.stringify(tasks));
+				console.log(index);
+				
+			var retrieveList = localStorage.getItem('tasks');
+			var retrievedList = JSON.parse(retrieveList);
+			tasks = retrievedList;	
+			
+				
+			if(this.checked === true){
+				console.log('It is checked');
+				
+			}
+			else {
+				console.log('not checked');
+			}
+			
+			
+			
+			
+			
 		}
 	}
 }
+
 checkCompletedTasks();
 
 
