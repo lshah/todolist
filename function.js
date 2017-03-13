@@ -32,16 +32,24 @@ function addTaskToTaskList(){
 function readTasksFromStorage(){
 		var retrieveList = localStorage.getItem('tasks');
 		var retrievedList = JSON.parse(retrieveList);
-		tasks = retrievedList;	
+		tasks = retrievedList;
 }
 
 function showTasksList(){
 	if(JSON.parse(localStorage.getItem('tasks')) !== null){
 			
 		readTasksFromStorage();
+		
 		var html = '<ul id="test">';
 		for(var i=0; i<tasks.length; i++){
-			html+='<li>' + '<input type="checkbox" name="task" value="" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + tasks[i]['taskLabel'] + '</label>' + '<button class="deleteTask"></button>' + '</li>'
+			html+='<li>' + '<input type="checkbox" name="task" value="" class="checkTask">' + '<label for="someId" class="taskLabel">' + tasks[i]['taskLabel'] + '</label>' + '<button class="deleteTask"></button>' + '</li>'
+		}
+		
+		for(var j=0; j<tasks.length; j++){
+			var b = tasks[j]['id'];
+			console.log(b);
+			
+			document.getElementsByTagName("input")[j].setAttribute("id", b);
 			
 		}
 		
@@ -77,6 +85,7 @@ function checkCompletedTasks(){
 		completedTask[j].onclick = function(){
 			var d = this.parentElement.textContent;
 			console.log(d);
+			readTasksFromStorage();
 			
 						
 			
