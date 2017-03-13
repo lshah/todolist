@@ -15,7 +15,6 @@ function enterEvent(event){
 var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
 var tasks = [];
-var obj = {'taskLabel':'', 'taskIndex': '', 'completedTask': ''};
 
 
 showTasksList();
@@ -23,22 +22,23 @@ removeTaskFromTaskList();
 
 /***Add task and store in local storage***/
 function addTaskToTaskList(){
-	obj["taskLabel"] = listItem.value;
-	tasks.push(obj);	
+	tasks.push({taskLabel: listItem.value, id: Date.now()});	
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	showTasksList();
 	clearValueAfterAddingTaskToList();
-	removeTaskFromTaskList();
+	removeTaskFromTaskList();	
 }
 
-
+function readTasksFromStorage(){
+		var retrieveList = localStorage.getItem('tasks');
+		var retrievedList = JSON.parse(retrieveList);
+		tasks = retrievedList;	
+}
 
 function showTasksList(){
 	if(JSON.parse(localStorage.getItem('tasks')) !== null){
-		var retrieveList = localStorage.getItem('tasks');
-		var retrievedList = JSON.parse(retrieveList);
-		tasks = retrievedList;		
-		
+			
+		readTasksFromStorage();
 		var html = '<ul id="test">';
 		for(var i=0; i<tasks.length; i++){
 			html+='<li>' + '<input type="checkbox" name="task" value="" id="someId" class="checkTask">' + '<label for="someId" class="taskLabel">' + tasks[i]['taskLabel'] + '</label>' + '<button class="deleteTask"></button>' + '</li>'
@@ -72,31 +72,13 @@ function removeTaskFromTaskList(){
 
 function checkCompletedTasks(){
 	var completedTask = document.getElementsByClassName('checkTask');
-	
+	console.log(completedTask);
 	for(var j=0; j<completedTask.length; j++){
 		completedTask[j].onclick = function(){
-			
 			var d = this.parentElement.textContent;
+			console.log(d);
 			
-			var index = findIndexOf(tasks, 'taskLabel', d);
-				console.log(index);
-				
-			var retrieveList = localStorage.getItem('tasks');
-			var retrievedList = JSON.parse(retrieveList);
-			tasks = retrievedList;	
-			
-				
-			if(this.checked === true){
-				console.log('It is checked');
-				
-			}
-			else {
-				console.log('not checked');
-			}
-			
-			
-			
-			
+						
 			
 		}
 	}
@@ -114,8 +96,16 @@ checkCompletedTasks();
 				}
 				return null;
 			}
-
-			
+	
+	function findTaskId(arrayToSearch,key, valueToFind){
+		for(var i=0; i<arrayToSearch.length; i++){
+			if (arrayToSearch[i][key] === valueToFind){
+				return arrayToSearch[i][key];
+			}
+		}
+	}
+		
+		
 function clearValueAfterAddingTaskToList(){
 	listItem.value = '';
 }
