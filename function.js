@@ -42,15 +42,13 @@ function showTasksList(){
 		
 		var html = '<ul id="test">';
 		for(var i=0; i<tasks.length; i++){
-			html+='<li>' + '<input type="checkbox" name="task" value="" class="checkTask">' + '<label for="someId" class="taskLabel">' + tasks[i]['taskLabel'] + '</label>' + '<button class="deleteTask"></button>' + '</li>'
-		}
-		
-		for(var j=0; j<tasks.length; j++){
-			var b = tasks[j]['id'];
-			console.log(b);
-			
-			document.getElementsByTagName("input")[j].setAttribute("id", b);
-			
+			html+=`
+			<li>
+				<input type="checkbox" id="${tasks[i].id}" name="task" value="" class="checkTask">
+				<label for="${tasks[i].id}" class="taskLabel">${tasks[i].taskLabel}</label>
+				<button class="deleteTask"></button>
+				</li>
+		`;
 		}
 		
 		html+='</ul>'
@@ -86,8 +84,8 @@ function checkCompletedTasks(){
 			var d = this.parentElement.textContent;
 			console.log(d);
 			readTasksFromStorage();
+
 			
-						
 			
 		}
 	}
