@@ -26,7 +26,8 @@ function addTaskToTaskList(){
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	showTasksList();
 	clearValueAfterAddingTaskToList();
-	removeTaskFromTaskList();	
+	removeTaskFromTaskList();
+	checkCompletedTasks();
 }
 
 function readTasksFromStorage(){
@@ -47,7 +48,7 @@ function showTasksList(){
 				<input type="checkbox" id="${tasks[i].id}" name="task" value="" class="checkTask">
 				<label for="${tasks[i].id}" class="taskLabel">${tasks[i].taskLabel}</label>
 				<button class="deleteTask"></button>
-				</li>
+			</li>
 		`;
 		}
 		
@@ -78,14 +79,23 @@ function removeTaskFromTaskList(){
 
 function checkCompletedTasks(){
 	var completedTask = document.getElementsByClassName('checkTask');
-	console.log(completedTask);
+	
 	for(var j=0; j<completedTask.length; j++){
 		completedTask[j].onclick = function(){
-			var d = this.parentElement.textContent;
+			var d = this.id;
 			console.log(d);
 			readTasksFromStorage();
-
 			
+			var task = findTask(d);
+			var a = task.checked=true;
+			
+			if(a === true){
+				tasks.splice(2, a);
+				localStorage.setItem('tasks', JSON.stringify(tasks));
+			}
+			else if(a === false){
+				
+			}
 			
 		}
 	}
@@ -104,14 +114,11 @@ checkCompletedTasks();
 				return null;
 			}
 	
-	function findTaskId(arrayToSearch,key, valueToFind){
-		for(var i=0; i<arrayToSearch.length; i++){
-			if (arrayToSearch[i][key] === valueToFind){
-				return arrayToSearch[i][key];
-			}
-		}
-	}
-		
+	
+	var findTask = function (id) {
+   return tasks.find(function (item) {
+       return item.id == id;
+	})};	
 		
 function clearValueAfterAddingTaskToList(){
 	listItem.value = '';
