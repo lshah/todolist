@@ -127,10 +127,13 @@ function checkTask(){
 		var task = findTask(getId);
 		console.log(task);
 			if(task.checked === true){
-				
+				console.log(task.id + ' is checked');
 			var a = document.querySelector('input[type="checkbox"]');
 					a.checked = true;
 				
+			}
+			else{
+				console.log(task.id + ' is not checked');
 			}
 			
 		}
