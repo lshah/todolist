@@ -18,11 +18,13 @@ var tasks = [];
 
 
 showTasksList();
+checkCompletedTasks();
 removeTaskFromTaskList();
+
 
 /***Add task and store in local storage***/
 function addTaskToTaskList(){
-	tasks.push({taskLabel: listItem.value, id: Date.now()});	
+	tasks.push({taskLabel: listItem.value, id: Date.now()});
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	showTasksList();
 	clearValueAfterAddingTaskToList();
@@ -34,6 +36,12 @@ function readTasksFromStorage(){
 		var retrieveList = localStorage.getItem('tasks');
 		var retrievedList = JSON.parse(retrieveList);
 		tasks = retrievedList;
+		
+		
+}
+
+function writeTasksToTaskList(a, b){
+	tasks.splice(a, b);
 }
 
 function showTasksList(){
@@ -50,16 +58,18 @@ function showTasksList(){
 				<button class="deleteTask"></button>
 			</li>
 		`;
+		
 		}
 		
 		html+='</ul>'
 		tasklist.innerHTML = html;
+		checkTask();
+		
 		removeTaskFromTaskList();
 	}
 	
 	
 }
-
 
 function removeTaskFromTaskList(){
 	var removeTask = document.getElementsByClassName('deleteTask');
@@ -69,7 +79,7 @@ function removeTaskFromTaskList(){
 			var d = this.parentElement.textContent;
 			var index = findIndexOf(tasks,"taskLabel", d);
 			console.log(index);
-			tasks.splice(index, 1);
+			writeTasksToTaskList(index, 1);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 			showTasksList();
 			
@@ -87,21 +97,35 @@ function checkCompletedTasks(){
 			readTasksFromStorage();
 			
 			var task = findTask(d);
-			var a = task.checked=true;
 			
-			if(a === true){
-				tasks.splice(2, a);
-				localStorage.setItem('tasks', JSON.stringify(tasks));
-			}
-			else if(a === false){
-				
-			}
+			task.checked = true;
+			writeTasksToTaskList(2, 0);
+			localStorage.setItem('tasks', JSON.stringify(tasks));
 			
 		}
 	}
 }
 
-checkCompletedTasks();
+/**function that will check checkbox state in local storage and update on page load**/
+function checkTask(){
+	readTasksFromStorage();
+		
+	for(var j=0; j<tasks.length; j++){
+		console.log(j);
+		var getId = (tasks[j].id);
+		console.log(getId);
+		var task = findTask(getId);
+		console.log(task);
+			if(task.checked === true){
+				
+			var a = document.querySelector('input[type="checkbox"]');
+					a.checked = true;
+				
+			}
+			
+		}
+}
+
 
 
 	function findIndexOf (arrayToSearch, key, valueToSeek){
@@ -115,7 +139,7 @@ checkCompletedTasks();
 			}
 	
 	
-	var findTask = function (id) {
+	function findTask(id) {
    return tasks.find(function (item) {
        return item.id == id;
 	})};	
