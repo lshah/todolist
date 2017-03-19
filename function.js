@@ -97,10 +97,20 @@ function checkCompletedTasks(){
 			readTasksFromStorage();
 			
 			var task = findTask(d);
-			
-			task.checked = true;
+					
+			if(this.checked === true){
+				console.log('yes, it is checked');
+				task.checked = true;
 			writeTasksToTaskList(2, 0);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
+			}
+			else{
+				console.log('not checked');
+				task.checked = false;
+			writeTasksToTaskList(2, 0);
+			localStorage.setItem('tasks', JSON.stringify(tasks));
+				
+			}
 			
 		}
 	}
