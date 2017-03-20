@@ -24,7 +24,7 @@ removeTaskFromTaskList();
 
 /***Add task and store in local storage***/
 function addTaskToTaskList(){
-	tasks.push({taskLabel: listItem.value, id: Date.now()});
+	tasks.push({taskLabel: listItem.value, id: `task-${Date.now()}`});
 	localStorage.setItem('tasks', JSON.stringify(tasks));
 	showTasksList();
 	clearValueAfterAddingTaskToList();
@@ -128,7 +128,7 @@ function checkTask(){
 		console.log(task);
 			if(task.checked === true){
 				console.log(task.id + ' is checked');
-			var a = document.querySelector('input[type="checkbox"]');
+			var a = document.querySelector(`#${getId}`);
 					a.checked = true;
 				
 			}
