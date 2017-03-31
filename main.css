@@ -16,17 +16,18 @@ font-family: 'Caveat Brush', cursive;
 }
 
 body {
-	font-family: 'Caveat Brush', cursive;
+	font-family: 'Lato', sans-serif;
+	background-color: black;
 	
 }
 
 
 #wrapper {
 	margin-top: 10px;	
-	max-width: 320px;
 	
 	margin-left: 5%;
 	border: solid 1px black;
+	
 }
 
 #header {
@@ -36,51 +37,47 @@ body {
 	}
 
 h1 {
-	font-family: 'Lato', sans-serif;
+	
 	margin-top: 25px;
 	text-align: center;
-	color: #4040bf;
-	font-size: 2.5em;
+	color: #99ccff;
+	font-size: 3.5em;
 }
 
+::-webkit-input-placeholder {
+	color: lightgray;
+	opacity: 0.3;
+}
+
+
 #todotext {
-	font-family: 'Caveat Brush', cursive;
-	margin: 25px 0 15px 25px;
+	
+	margin: 2% 38%;
 	height: 25px;
 	width: 275px;
 	border: none;
-	border-bottom: solid 1px black;
-	font-size: 1.2em;
-	
+	border-bottom: solid 1px gray;
+	font-size: 1.4em;
+	background-color: black;
+	color: white;
 	
 }
 
-#todo {
-	height: 25px;
-	width: 275px;
-	margin-top: 25px;
-}
+
 
 #list {
-	height: 275px;
+	height: auto;
 	width: 275px;
-	margin: 0 25px 25px 25px;
-	font-family: 'Caveat Brush', cursive;
-	font-size: 1.5em;
+	margin: 0 38%;
+	
+	font-size: 1.9em;
 	overflow: auto;
+	color: #cc99ff;
+	
 }
 
 #btn {
-	height: 25px;
-	width: 25px;
-	margin-left: -35px;
-	background-color: white;
-	color: black;
-	border: none;
-	font-size: 1.5em;
-	color: #4040bf;
-	font-family: 'Lato', sans-serif;
-	-webkit-appearance: none;
+	display: none;
 	
 }
 
@@ -91,17 +88,23 @@ h1 {
 .deleteTask {
 	height: 25px;
 	width: 25px;
-	background-color: white;
-	color: tomato;
+	background-color: black;
+	
 	border: none;
 	margin-left: 3%;
 	float: right;
 	
+	
 }	
 .deleteTask:after{
+	font-size: 1.9em;
 	content: "x";
-	color: red;
+	color: #ccff99;
+	
 }
+
+
+
 
 .checkTask {
 	display: inline-block;
@@ -111,18 +114,23 @@ h1 {
 
 input[type=checkbox]:checked + label {
 	text-decoration: line-through;
+	opacity: 0.3;
 }
 
+
+
 footer {
-	background-color: #4040bf;
+	text-align: center;
+	font-size: 1.3em;
 	height: 35px;
 	padding-top: 3%;
 }
 
 footer a{
-	margin-left: 75%;
+	
 	text-decoration: none;
-	color: white;
+	text-align: center;
+	color: #ff9999;
 }
 
 
@@ -130,13 +138,6 @@ footer a{
 /****Media Queries****/
 
 @media (max-width: 735px){
-	#wrapper {
-	margin-top: 10px;	
-	max-width: 85%;
-	margin-left: -1%;
-	border: none;
-}
-
 
 
 }

@@ -36,7 +36,7 @@ function readTasksFromStorage(){
 		var retrieveList = localStorage.getItem('tasks');
 		var retrievedList = JSON.parse(retrieveList);
 		tasks = retrievedList;
-		
+
 		
 }
 
@@ -45,7 +45,12 @@ function writeTasksToTaskList(a, b){
 }
 
 function showTasksList(){
-	if(JSON.parse(localStorage.getItem('tasks')) !== null){
+	
+	if (JSON.parse(localStorage.getItem('tasks')) === null){
+			console.log('empty');
+		}
+	
+	else if(JSON.parse(localStorage.getItem('tasks')) !== null){
 			
 		readTasksFromStorage();
 		
@@ -66,6 +71,8 @@ function showTasksList(){
 		checkTask();
 		
 		removeTaskFromTaskList();
+		
+
 	}
 	
 	
@@ -76,8 +83,10 @@ function removeTaskFromTaskList(){
 	
 	for(var j=0; j < removeTask.length; j++){
 		removeTask[j].onclick = function(){
-			var d = this.parentElement.textContent;
-			var index = findIndexOf(tasks,"taskLabel", d);
+			var d = this.parentNode.firstElementChild.id;
+			console.log(d);
+			
+			var index = findIndexOf(tasks,"id", d);
 			console.log(index);
 			writeTasksToTaskList(index, 1);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -93,19 +102,19 @@ function checkCompletedTasks(){
 	for(var j=0; j<completedTask.length; j++){
 		completedTask[j].onclick = function(){
 			var d = this.id;
-			console.log(d);
+			
 			readTasksFromStorage();
 			
 			var task = findTask(d);
 					
 			if(this.checked === true){
-				console.log('yes, it is checked');
+				
 				task.checked = true;
 			writeTasksToTaskList(2, 0);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 			}
 			else{
-				console.log('not checked');
+				
 				task.checked = false;
 			writeTasksToTaskList(2, 0);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -121,20 +130,19 @@ function checkTask(){
 	readTasksFromStorage();
 		
 	for(var j=0; j<tasks.length; j++){
-		console.log(j);
+		
 		var getId = (tasks[j].id);
-		console.log(getId);
+		
 		var task = findTask(getId);
-		console.log(task);
+		
 			if(task.checked === true){
-				console.log(task.id + ' is checked');
+				
 			var a = document.querySelector(`#${getId}`);
 					a.checked = true;
+					
 				
 			}
-			else{
-				console.log(task.id + ' is not checked');
-			}
+			
 			
 		}
 }
@@ -162,6 +170,7 @@ function clearValueAfterAddingTaskToList(){
 }
 
 function clearTasksList(){
+	
 	window.localStorage.clear();
 }
 
