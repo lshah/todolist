@@ -22,13 +22,7 @@ body {
 }
 
 
-#wrapper {
-	margin-top: 10px;	
-	
-	margin-left: 5%;
-	border: solid 1px black;
-	
-}
+
 
 #header {
 	
@@ -52,7 +46,7 @@ h1 {
 
 #todotext {
 	
-	margin: 2% 38%;
+	margin: 1% 38%;
 	height: 25px;
 	width: 275px;
 	border: none;
@@ -94,8 +88,16 @@ h1 {
 	margin-left: 3%;
 	float: right;
 	
-	
-}	
+}
+
+button {
+	display: none;
+}
+
+.listdiv:hover  button{
+	display: block;
+}
+
 .deleteTask:after{
 	font-size: 1.9em;
 	content: "x";
@@ -138,6 +140,9 @@ footer a{
 /****Media Queries****/
 
 @media (max-width: 735px){
-
+	#wrapper {
+	
+	
+	}
 
 }

@@ -57,11 +57,13 @@ function showTasksList(){
 		var html = '<ul id="test">';
 		for(var i=0; i<tasks.length; i++){
 			html+=`
+			<div class="listdiv">
 			<li>
 				<input type="checkbox" id="${tasks[i].id}" name="task" value="" class="checkTask">
 				<label for="${tasks[i].id}" class="taskLabel">${tasks[i].taskLabel}</label>
 				<button class="deleteTask"></button>
 			</li>
+			</div>
 		`;
 		
 		}
