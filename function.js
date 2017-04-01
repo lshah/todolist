@@ -106,7 +106,6 @@ function removeTaskFromTaskList(){
 			showTasksList();
 			
 		}
-		showClearList();
 	}
 }
 
@@ -134,7 +133,6 @@ function checkCompletedTasks(){
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 				
 			}
-			showClearList();
 			
 		}
 	}
