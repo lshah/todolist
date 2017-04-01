@@ -21,9 +21,6 @@ body {
 	
 }
 
-
-
-
 #header {
 	
 	padding: 5px 0px;
@@ -129,10 +126,10 @@ footer {
 }
 
 footer a{
-	
 	text-decoration: none;
 	text-align: center;
 	color: #ff9999;
+	display: none;
 }
 
 

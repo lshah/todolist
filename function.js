@@ -17,9 +17,12 @@ var tasklist = document.getElementById('list');
 var tasks = [];
 
 
+
 showTasksList();
 checkCompletedTasks();
 removeTaskFromTaskList();
+
+
 
 
 /***Add task and store in local storage***/
@@ -31,6 +34,13 @@ function addTaskToTaskList(){
 	removeTaskFromTaskList();
 	checkCompletedTasks();
 }
+
+function showClearList(){
+	if(localStorage.getItem('tasks') !== null){
+		document.getElementById("clearList").style.display = "block";
+	}
+}
+
 
 function readTasksFromStorage(){
 		var retrieveList = localStorage.getItem('tasks');
@@ -44,13 +54,11 @@ function writeTasksToTaskList(a, b){
 	tasks.splice(a, b);
 }
 
+
+
 function showTasksList(){
 	
-	if (JSON.parse(localStorage.getItem('tasks')) === null){
-			console.log('empty');
-		}
-	
-	else if(JSON.parse(localStorage.getItem('tasks')) !== null){
+	if(JSON.parse(localStorage.getItem('tasks')) !== null){
 			
 		readTasksFromStorage();
 		
@@ -70,15 +78,18 @@ function showTasksList(){
 		
 		html+='</ul>'
 		tasklist.innerHTML = html;
+		
 		checkTask();
 		
 		removeTaskFromTaskList();
 		
-
+		
 	}
 	
 	
 }
+
+
 
 function removeTaskFromTaskList(){
 	var removeTask = document.getElementsByClassName('deleteTask');
@@ -95,6 +106,7 @@ function removeTaskFromTaskList(){
 			showTasksList();
 			
 		}
+		showClearList();
 	}
 }
 
@@ -122,6 +134,7 @@ function checkCompletedTasks(){
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 				
 			}
+			showClearList();
 			
 		}
 	}
@@ -144,6 +157,7 @@ function checkTask(){
 					
 				
 			}
+			
 			
 			
 		}
@@ -169,6 +183,7 @@ function checkTask(){
 		
 function clearValueAfterAddingTaskToList(){
 	listItem.value = '';
+	showClearList();
 }
 
 function clearTasksList(){
