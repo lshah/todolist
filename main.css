@@ -43,7 +43,7 @@ h1 {
 #todotext {
 	padding-top: 15px;
 	height: 25px;
-	width: 200px;
+	width: 250px;
 	border: none;
 	border-bottom: solid 1px gray;
 	font-size: 1.4em;
@@ -78,7 +78,7 @@ h1 {
 	background-color: black;
 	
 	border: none;
-	margin-right: 75px;
+	margin-right: 25px;
 	float: right;
 	
 }
@@ -142,6 +142,7 @@ footer a{
 	
 }
 
+
 }
 @media (max-width: 450px){
 	#wrapper {
@@ -149,6 +150,17 @@ footer a{
 	padding-left: 20%;
 	margin: 15px auto;
 	
+}
+.deleteTask {
+	
+	margin-right: 45px;
+	
+}
+
+#todotext {
+	
+	width: 230px;
+		
 }
 
 }
