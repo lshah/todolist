@@ -16,7 +16,7 @@ font-family: 'Caveat Brush', cursive;
 
 body {
 	font-family: 'Lato', sans-serif;
-	background-color: black;
+	background-color: #333333;
 	
 }
 
@@ -30,7 +30,7 @@ body {
 
 h1 {
 	padding: 15px 0 15px 25px;
-	color: #99ccff;
+	color: #ff9966;
 	font-size: 3.5em;
 }
 
@@ -47,7 +47,7 @@ h1 {
 	border: none;
 	border-bottom: solid 1px gray;
 	font-size: 1.4em;
-	background-color: black;
+	background-color: #333333;
 	color: white;	
 }
 
@@ -59,7 +59,7 @@ h1 {
 	width: 275px;
 	font-size: 1.5em;
 	overflow: auto;
-	color: #cc99ff;
+	color: #ffddcc;
 	
 }
 
@@ -75,7 +75,7 @@ h1 {
 .deleteTask {
 	height: 25px;
 	width: 25px;
-	background-color: black;
+	background-color: #333333;
 	
 	border: none;
 	margin-right: 25px;
@@ -99,7 +99,7 @@ button {
 .deleteTask:after{
 	font-size: 1.5em;
 	content: "x";
-	color: #ccff99;
+	color: #ff9966;
 	
 }
 
@@ -121,12 +121,12 @@ footer {
 	
 	height: 35px;
 	padding-top: 25px;
-	margin: 0 55px;
+	margin: 0 70px;
 }
 
 footer a{
 	text-decoration: none;
-	color: #ff9999;
+	color: lightgrey;
 	display: block;
 }
 
@@ -137,29 +137,29 @@ footer a{
 @media (max-width: 735px){
 	#wrapper {
 	max-width: 940px;
-	padding-left: 35%;
+	padding-left: 25%;
 	margin: 15px auto;
 	
 }
 
 
 }
-@media (max-width: 450px){
+@media (max-width: 414px){
 	#wrapper {
 	max-width: 940px;
-	padding-left: 20%;
+	padding-left: 15%;
 	margin: 15px auto;
 	
 }
 .deleteTask {
 	
-	margin-right: 45px;
+	margin-right: 75px;
 	
 }
 
 #todotext {
 	
-	width: 230px;
+	width: 200px;
 		
 }
 
