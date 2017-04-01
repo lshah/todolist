@@ -185,7 +185,7 @@ function clearValueAfterAddingTaskToList(){
 }
 
 function clearTasksList(){
-	
+	showClearList();
 	window.localStorage.clear();
 }
 
