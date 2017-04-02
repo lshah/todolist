@@ -1,7 +1,8 @@
 
 /***Click button to add task***/
 document.getElementById('btn').addEventListener('click', addTaskToTaskList);
-document.addEventListener("DOMContentLoaded", showFooter, false)
+document.addEventListener("DOMContentLoaded", showFooter, false);
+document.addEventListener("DOMContentLoaded", countTasks, false);
 /***Add task using enter key on keyboard***/
 function enterEvent(event){
 	var x= event.which || event.keyCode;
@@ -26,6 +27,7 @@ function addTaskToTaskList(){
 	removeTaskFromTaskList();
 	checkCompletedTasks();
 	showFooter();
+	countTasks();
 }
 
 
@@ -95,8 +97,16 @@ function removeTaskFromTaskList(){
 			writeTasksToTaskList(index, 1);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 			showTasksList();
+			/**Need to make this a function at some point. this is the remove the Clear List link after all tasks are removed from the list**/
+			if(localStorage.getItem('tasks') === "[]"){
+			clearTasksList();
 			
 		}
+		countTasks();
+		
+		}
+		
+		
 	}
 }
 
@@ -124,7 +134,7 @@ function checkCompletedTasks(){
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 				
 			}
-			
+			countTasks();
 		}
 	}
 }
@@ -183,4 +193,17 @@ function showFooter(){
 	if(localStorage.getItem('tasks') !== null){
 		document.querySelector("footer").style.display = "block";
 	}
+}
+
+function countTasks(){
+	
+	var count = 0;
+	for(var j=0; j<tasks.length; j++){
+		var getId = (tasks[j].id);
+		var task = findTask(getId);
+			if(task.checked !== true || task.checked === null){
+				count++;
+			}
+}
+	document.getElementById("numberOfTasks").innerHTML = count + ` item(s) left`;
 }

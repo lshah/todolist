@@ -140,16 +140,24 @@ footer {
 
 	height: 35px;
 	padding-top: 25px;
-	margin: 0 70px;
+	
 	display: none;
 }
 
 footer a{
 	text-decoration: none;
 	color: #a6a6a6;
-	display: block;
 }
 
+footer ul {
+	list-style: none;
+}
+
+footer li {
+	display: inline;
+	padding-right: 2%;
+	padding-left: 3%;
+}
 
 
 /****Media Queries****/
@@ -182,5 +190,7 @@ footer a{
 	width: 200px;
 		
 }
+
+
 
 }
