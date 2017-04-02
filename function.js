@@ -1,7 +1,7 @@
 
 /***Click button to add task***/
 document.getElementById('btn').addEventListener('click', addTaskToTaskList);
-
+document.addEventListener("DOMContentLoaded", showFooter, false)
 /***Add task using enter key on keyboard***/
 function enterEvent(event){
 	var x= event.which || event.keyCode;
@@ -17,14 +17,6 @@ var tasklist = document.getElementById('list');
 var tasks = [];
 
 
-
-showTasksList();
-checkCompletedTasks();
-removeTaskFromTaskList();
-
-
-
-
 /***Add task and store in local storage***/
 function addTaskToTaskList(){
 	tasks.push({taskLabel: listItem.value, id: `task-${Date.now()}`});
@@ -33,20 +25,19 @@ function addTaskToTaskList(){
 	clearValueAfterAddingTaskToList();
 	removeTaskFromTaskList();
 	checkCompletedTasks();
+	showFooter();
 }
 
-function showClearList(){
-	if(localStorage.getItem('tasks') !== null){
-		document.getElementById("clearList").style.display = "block";
-	}
-}
 
+showTasksList();
+checkCompletedTasks();
+removeTaskFromTaskList();
 
 function readTasksFromStorage(){
 		var retrieveList = localStorage.getItem('tasks');
 		var retrievedList = JSON.parse(retrieveList);
 		tasks = retrievedList;
-
+		
 		
 }
 
@@ -181,11 +172,15 @@ function checkTask(){
 		
 function clearValueAfterAddingTaskToList(){
 	listItem.value = '';
-	showClearList();
+	
 }
 
 function clearTasksList(){
-	showClearList();
 	window.localStorage.clear();
 }
 
+function showFooter(){
+	if(localStorage.getItem('tasks') !== null){
+		document.querySelector("footer").style.display = "block";
+	}
+}
