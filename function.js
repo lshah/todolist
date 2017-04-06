@@ -17,6 +17,10 @@ var listItem = document.getElementById('todotext');
 var tasklist = document.getElementById('list');
 var tasks = [];
 
+showTasksList();
+checkCompletedTasks();
+removeTaskFromTaskList();
+
 
 /***Add task and store in local storage***/
 function addTaskToTaskList(){
@@ -30,10 +34,6 @@ function addTaskToTaskList(){
 	countTasks();
 }
 
-
-showTasksList();
-checkCompletedTasks();
-removeTaskFromTaskList();
 
 function readTasksFromStorage(){
 		var retrieveList = localStorage.getItem('tasks');
@@ -78,10 +78,9 @@ function showTasksList(){
 		
 		
 	}
-	
+
 	
 }
-
 
 
 function removeTaskFromTaskList(){
@@ -97,13 +96,9 @@ function removeTaskFromTaskList(){
 			writeTasksToTaskList(index, 1);
 			localStorage.setItem('tasks', JSON.stringify(tasks));
 			showTasksList();
-			/**Need to make this a function at some point. this is the remove the Clear List link after all tasks are removed from the list**/
-			if(localStorage.getItem('tasks') === "[]"){
-			clearTasksList();
-			
-		}
-		countTasks();
-		
+			hideFooter();
+			countTasks();
+			checkCompletedTasks();
 		}
 		
 		
@@ -135,7 +130,9 @@ function checkCompletedTasks(){
 				
 			}
 			countTasks();
+			
 		}
+		
 	}
 }
 
@@ -179,7 +176,13 @@ function checkTask(){
    return tasks.find(function (item) {
        return item.id == id;
 	})};	
-		
+
+function checkAllTasks(){
+	var a = document.getElementsByClassName('checkTask');
+	
+	
+}
+	
 function clearValueAfterAddingTaskToList(){
 	listItem.value = '';
 	
@@ -189,10 +192,20 @@ function clearTasksList(){
 	window.localStorage.clear();
 }
 
+
+
 function showFooter(){
 	if(localStorage.getItem('tasks') !== null){
 		document.querySelector("footer").style.display = "block";
 	}
+}
+
+function hideFooter() {
+	if(localStorage.getItem('tasks') === "[]"){
+			document.querySelector("footer").style.display = "none";
+			clearTasksList();
+			
+		}
 }
 
 function countTasks(){
@@ -207,3 +220,4 @@ function countTasks(){
 }
 	document.getElementById("numberOfTasks").innerHTML = count + ` item(s) left`;
 }
+
