@@ -149,25 +149,33 @@ function checkTask() {
 
 /***Function to  mark all tasks complete at once***/
 function checkAllTasks() {
+	readTasksFromStorage();	
     for (var j = 0; j < tasks.length; j++) {
         var getId = (tasks[j].id);
         var task = findTask(getId);
-        
+		console.log(task);
+        console.log(tasks.length);
+		
             var a = document.querySelector(`#${getId}`);
-            
+			var b = document.querySelectorAll('input[type="checkbox"]:checked').length;
 			
-			if (a.checked === true) {
-				
-                task.checked = false;
-                writeTasksToTaskList(2, 0);
-                localStorage.setItem('tasks', JSON.stringify(tasks));
-            } else {
+			console.log(b);
+			if (a.checked === false) {
 				
                 task.checked = true;
                 writeTasksToTaskList(2, 0);
                 localStorage.setItem('tasks', JSON.stringify(tasks));
-
-            }
+            } 
+			else if (a.checked === true && tasks.length === b) {
+				
+                
+				task.checked = false;
+                writeTasksToTaskList(2, 0);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+            } 
+			
+			
+			
             countTasks();
 			
         }
@@ -176,6 +184,7 @@ function checkAllTasks() {
 	console.log('button click');
 
 }
+
 
 /***Function to find index of a task***/
 function findIndexOf(arrayToSearch, key, valueToSeek) {
@@ -235,3 +244,31 @@ function countTasks() {
     }
     document.getElementById("numberOfTasks").innerHTML = count + ` item(s) left`;
 }
+
+
+/***Completed task list***/
+function completedTaskList(){
+	
+	if(localStorage.getItem('tasks') !== null){
+		readTasksFromStorage();
+		for (var j = 0; j < tasks.length; j++) {
+        var getId = (tasks[j].id);
+        var task = findTask(getId);
+		console.log(task);
+        console.log(tasks.length);
+		
+            var a = document.querySelector(`#${getId}`);
+			
+			if(a.checked === false){
+				document.querySelector(`#${getId}`).parentNode.style.display = 'none';
+				document.getElementById('completeTasks').innerHTML = 'All';
+				
+			}
+			else if(a.checked = true){
+				document.querySelector(`#${getId}`).parentNode.style.display = 'block';
+			}
+	}
+
+	}
+}
+
