@@ -16,7 +16,7 @@ font-family: 'Caveat Brush', cursive;
 
 body {
 	font-family: 'Lato', sans-serif;
-	background-color: #4d4d4d;
+	background-color: white;
 	
 }
 
@@ -30,13 +30,16 @@ body {
 
 h1 {
 	padding: 15px 0 15px 52px;
-	color: #333333;
+	color: #80ccff;
 	font-size: 3.5em;
-	
+}
+
+#numberOfTasks {
+	padding: 2px 0 15px 72px;
 }
 
 ::-webkit-input-placeholder {
-	color: lightgray;
+	color: gray;
 	opacity: 0.3;
 	padding-left: 5px;
 	
@@ -49,8 +52,8 @@ h1 {
 	border: none;
 	border-bottom: solid 1px gray;
 	font-size: 1em;
-	background-color: #4d4d4d;
-	color: white;
+	background-color: white;
+	color: black;
 	
 }
 
@@ -62,7 +65,7 @@ h1 {
 	width: 275px;
 	font-size: 1.3em;
 	overflow: auto;
-	color: #cccccc;
+	color: black;
 	
 }
 
@@ -78,7 +81,7 @@ h1 {
 .deleteTask {
 	height: 25px;
 	width: 25px;
-	background-color: #4d4d4d;
+	background-color: white;
 	
 	border: none;
 	margin-right: 25px;
@@ -120,7 +123,7 @@ button {
 .deleteTask:after{
 	font-size: 1.5em;
 	content: "x";
-	color: #ff9966;
+	color: tomato;
 	
 }
 
@@ -136,7 +139,6 @@ input[type=checkbox]:checked + label {
 }
 
 
-
 footer {
 
 	height: 35px;
@@ -147,7 +149,7 @@ footer {
 
 footer a{
 	text-decoration: none;
-	color: #a6a6a6;
+	color: #5c5cd6;
 }
 
 footer ul {
@@ -197,7 +199,6 @@ footer li {
 footer li {
 	display: block;
 }
-
 
 
 }

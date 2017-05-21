@@ -185,6 +185,26 @@ function checkAllTasks() {
 
 }
 
+function completedTaskList(){	
+		readTasksFromStorage();
+		for (var j = 0; j < tasks.length; j++) {
+        var getId = (tasks[j].id);
+        var task = findTask(getId);
+		
+		
+            var a = document.querySelector(`#${getId}`);
+			
+			if(a.checked === null || a.checked === false){
+				
+				a.parentNode.style.display = 'none';
+				
+			}
+			
+	}
+
+	
+}
+
 
 /***Function to find index of a task***/
 function findIndexOf(arrayToSearch, key, valueToSeek) {
@@ -243,32 +263,17 @@ function countTasks() {
         }
     }
     document.getElementById("numberOfTasks").innerHTML = count + ` item(s) left`;
+	
+	if(count > 0){
+		document.getElementById("numberOfTasks").style.color = 'red';
+	}
+	
+	else {
+		document.getElementById("numberOfTasks").style.color = '#5c5cd6';
+	}
 }
 
 
 /***Completed task list***/
-function completedTaskList(){
-	
-	if(localStorage.getItem('tasks') !== null){
-		readTasksFromStorage();
-		for (var j = 0; j < tasks.length; j++) {
-        var getId = (tasks[j].id);
-        var task = findTask(getId);
-		console.log(task);
-        console.log(tasks.length);
-		
-            var a = document.querySelector(`#${getId}`);
-			
-			if(a.checked === false){
-				document.querySelector(`#${getId}`).parentNode.style.display = 'none';
-				document.getElementById('completeTasks').innerHTML = 'All';
-				
-			}
-			else if(a.checked = true){
-				document.querySelector(`#${getId}`).parentNode.style.display = 'block';
-			}
-	}
 
-	}
-}
 

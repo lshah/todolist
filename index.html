@@ -16,6 +16,7 @@
 		<div id="wrapper">
 			<div id="header">
 				<h1>todos</h1>
+				<div id ="numberOfTasks" onload="countTasks()"></div>	
 			</div>
 				
 			
@@ -28,10 +29,11 @@
 				<script src="function.js"></script>
 				<footer>
 				<ul>
-				<li id ="numberOfTasks" onload="countTasks()"></li>
+							
 				<li><a href="" id="checkAll" onclick="checkAllTasks()">Complete All</a></li>
 				<li><a href="" id ="clearList" onclick="clearTasksList()" onload="showFooter()">Clear List</a></li>
-				<li><a href="" id="completeTasks" onclick="completedTaskList()">Completed</a></li>
+				<li><a href="" id="completeTasks" onclick="completedTaskList(); return false">Completed</a></li>
+				<li><a href="" id="completeTasks" onclick="showTaskList(); return false">All</a></li>
 								
 				</ul>
 				</footer>		
