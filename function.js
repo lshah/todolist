@@ -181,7 +181,7 @@ function checkAllTasks() {
         }
 
     
-	console.log('button click');
+completedTaskList()
 
 }
 
@@ -208,15 +208,14 @@ var count = 0;
 			console.log(tasks.length);
         }
 		
-		if(tasks.length === count)
-			document.getElementById('list').innerHTML = "No completed tasks at this time.";
-			document.getElementById('list').style.color = 'gray';
-			document.getElementById('list').style.fontSize = '0.8em';
-			   
+		if(tasks.length === count){
+			document.getElementById('noCompletedTask').innerHTML = "No completed tasks at this time.";
+			
 			}
-					
+			
+				
 
-   
+		}
   
 	}
 	

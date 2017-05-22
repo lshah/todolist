@@ -138,6 +138,10 @@ input[type=checkbox]:checked + label {
 	opacity: 0.3;
 }
 
+#noCompletedTask {
+	color: gray;
+	font-size: 0.8em;
+}
 
 footer {
 
