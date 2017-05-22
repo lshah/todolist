@@ -185,7 +185,11 @@ function checkAllTasks() {
 
 }
 
+
+/***Completed task list***/
+
 function completedTaskList(){	
+var count = 0;
 		readTasksFromStorage();
 		for (var j = 0; j < tasks.length; j++) {
         var getId = (tasks[j].id);
@@ -198,10 +202,25 @@ function completedTaskList(){
 				
 				a.parentNode.style.display = 'none';
 				
+        if (task.checked !== true) {
+            count++;
+			console.log(count);
+			console.log(tasks.length);
+        }
+		
+		if(tasks.length === count)
+			document.getElementById('list').innerHTML = "No completed tasks at this time.";
+			document.getElementById('list').style.color = 'gray';
+			document.getElementById('list').style.fontSize = '0.8em';
+			   
 			}
-			
-	}
+					
 
+   
+  
+	}
+	
+	
 	
 }
 
@@ -274,6 +293,5 @@ function countTasks() {
 }
 
 
-/***Completed task list***/
 
 
